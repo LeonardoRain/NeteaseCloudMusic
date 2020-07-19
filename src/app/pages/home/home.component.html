@@ -1,0 +1,24 @@
+<div class="home">
+  <app-ne-carousel
+    #neCarousel
+    [activeIndex]="carouselActiveIndex"
+    (changeSlide)="onChangeSlide($event)"
+  >
+    <nz-carousel
+      nzAutoPlay
+      nzEffect="fade"
+      [nzDotRender]="neCarousel.dotRef"
+      (nzBeforeChange)="onBeforeChange($event)"
+    >
+      <div
+        class="carousel-item"
+        nz-carousel-content
+        *ngFor="let item of banners"
+      >
+        <a [href]="item.url" target="_blank" class="banner-item">
+          <img [src]="item.imageUrl" />
+        </a>
+      </div>
+    </nz-carousel>
+  </app-ne-carousel>
+</div>
