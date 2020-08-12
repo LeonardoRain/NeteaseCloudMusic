@@ -21,4 +21,54 @@
       </div>
     </nz-carousel>
   </app-ne-carousel>
+  <div class="main">
+    <div class="wrap">
+      <div class="left">
+        <div class="sec">
+          <div class="up">
+            <div class="navs">
+              <h2>
+                <i></i>
+                <a>热门推荐</a>
+              </h2>
+              <nav>
+                <a *ngFor="let tag of hotTags">{{ tag.name }}</a>
+              </nav>
+            </div>
+            <a>
+              更多
+              <i nz-icon nzType="arrow-right" nzTheme="outline"></i>
+            </a>
+          </div>
+          <div class="down">
+            <div class="down-wrap">
+              <app-single-sheet
+                class="sheet-item"
+                *ngFor="let sheet of songSheetList"
+                [sheet]="sheet"
+                (onPlay)="onPlaySheet($event)"
+              ></app-single-sheet>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <app-member-card></app-member-card>
+        <div class="settled-singer">
+          <div class="tit"><b>入驻歌手</b></div>
+          <div class="list">
+            <div class="card" *ngFor="let singer of singers">
+              <div class="pic">
+                <img [src]="singer.img1v1Url" [alt]="singer.name" />
+              </div>
+              <div class="txt">
+                <b class="ellipsis">{{ singer.name }}</b>
+                <span>专辑数: {{ singer.albumSize }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

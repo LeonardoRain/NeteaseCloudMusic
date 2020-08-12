@@ -1,175 +1,173 @@
-img{
+img {
   display: inline-block;
   width: 100%;
 }
 
-input:focus{
-  outline:none;
+input:focus {
+  outline: none;
 }
 
-a{
+a {
   color: inherit;
-  &:hover{
+  &:hover {
     color: inherit;
     text-decoration: underline;
   }
 }
 
-.pagination a:hover{
+.pagination a:hover {
   text-decoration: none;
 }
 
-h1, h2, h3, h4, h5, h6{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin-bottom: 0;
 }
 
-.none{
+.none {
   display: none;
 }
 
-
-.full-height{
+.full-height {
   height: 100%;
 }
 
-.ellipsis{
+.ellipsis {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   word-wrap: normal;
 }
 
-.clearfix:after{
+.clearfix:after {
   clear: both;
-  content: '.';
+  content: ".";
   display: block;
   height: 0;
   visibility: hidden;
 }
 
-.f-brk{
+.f-brk {
   word-wrap: break-word;
   word-break: break-all;
   white-space: normal;
 }
 
-
-.wrap{
+.wrap {
   width: 980px;
   margin: 0 auto;
 }
 
-
-.feature-wrap{
+.feature-wrap {
   min-height: 700px;
   border: 1px solid @border-color-base;
   border-width: 0 1px;
   background-color: @white-color;
 }
 
-
-.tip-bg{
-  .ant-tooltip-inner{
+.tip-bg {
+  .ant-tooltip-inner {
     background-color: @black-color;
   }
 }
 
-
-.modal-content{
+.modal-content {
   position: relative;
   // border: 1px solid @play-bg-color;
   // border-width: 0 1px 1px;
   // border-radius: 0 0 4px 4px;
 
-  .modal-wrap{
+  .modal-wrap {
     width: 300px;
     margin: 0 auto;
     padding: 30px 0 43px;
-    .ant-form-item{
+    .ant-form-item {
       margin-bottom: 14px;
     }
   }
 }
 
-
-.wy-sec{
+.ne-sec {
   margin-top: 27px;
-  .wy-sec-wrap{
+  .ne-sec-wrap {
     padding-bottom: 10px;
     border-bottom: 2px solid @red-color;
-    .wy-sec-tit{
+    .ne-sec-tit {
       font-size: @font-size-lgs;
     }
   }
 }
 
-
-.wy-table{
+.ne-table {
   // display: block;
   // max-width: 100%;
-  thead{
-    tr{
-      th{
+  thead {
+    tr {
+      th {
         background-color: @thead-bg-color;
       }
     }
   }
-  tr{
-    td{
+  tr {
+    td {
       cursor: pointer;
       font-size: @font-size-lg;
       padding: 8px 16px;
     }
-    .first-col{
-      span{
+    .first-col {
+      span {
         display: inline-block;
         width: 30px;
       }
-      .ico{
-        .icon('../images/table.png', 17px, 17px);
+      .ico {
+        .icon("../images/table.png", 17px, 17px);
         background-position: 0 -103px;
         vertical-align: sub;
-        &:hover{
+        &:hover {
           background-position: 0 -128px;
         }
-        &.current{
+        &.current {
           background-position: -20px -128px;
         }
       }
     }
-    .song-name{
+    .song-name {
       color: @link-color;
     }
-    .time-col{
-      .icons{
+    .time-col {
+      .icons {
         display: none;
         margin-bottom: 0;
-        .ico{
-          .icon('../images/table.png', 18px, 16px);
+        .ico {
+          .icon("../images/table.png", 18px, 16px);
           margin-left: 5px;
-          &.add{
+          &.add {
             margin-left: 0;
             background-image: url(../images/icon.png);
             background-position: -0 -700px;
-            &:hover{
+            &:hover {
               background-position: -22px -700px;
             }
           }
-          &.like{
+          &.like {
             background-position: 0 -174px;
-            &:hover{
+            &:hover {
               background-position: -20px -174px;
             }
           }
-          &.share{
+          &.share {
             background-position: 0 -195px;
-            &:hover{
+            &:hover {
               background-position: -20px -195px;
             }
           }
-          &.download{
+          &.download {
             background-position: -81px -174px;
-            &:hover{
+            &:hover {
               background-position: -104px -174px;
             }
           }
@@ -177,26 +175,23 @@ h1, h2, h3, h4, h5, h6{
       }
     }
 
-     &:hover{
-      .time-col{
-        span{
+    &:hover {
+      .time-col {
+        span {
           display: none;
         }
-        .icons{
+        .icons {
           display: block;
         }
       }
     }
   }
-  
 }
 
-
-.highlight{
+.highlight {
   color: @highlight-text;
 }
 
-
-.margin-bottom-none{
-  margin-bottom: 0; 
+.margin-bottom-none {
+  margin-bottom: 0;
 }
