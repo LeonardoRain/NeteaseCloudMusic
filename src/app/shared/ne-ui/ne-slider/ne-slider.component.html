@@ -1,4 +1,15 @@
-<div class="ne-slider" #neSlider>
-  <app-ne-slider-track></app-ne-slider-track>
-  <app-ne-slider-handle></app-ne-slider-handle>
+<div class="ne-slider" #neSlider [class.ne-slider-vertical]="neVertical">
+  <app-ne-slider-track
+    [neVertical]="neVertical"
+    [neLength]="bufferOffset"
+    [neBuffer]="true"
+  ></app-ne-slider-track>
+  <app-ne-slider-track
+    [neVertical]="neVertical"
+    [neLength]="offset"
+  ></app-ne-slider-track>
+  <app-ne-slider-handle
+    [neVertical]="neVertical"
+    [neOffset]="offset"
+  ></app-ne-slider-handle>
 </div>

@@ -10,12 +10,17 @@ import { NeSlierStyle } from './ne-slider-types';
 
 @Component({
   selector: 'app-ne-slider-track',
-  template: `<div class="ne-slider-track" [ngStyle]="style"></div>`,
+  template: `<div
+    class="ne-slider-track"
+    [class.buffer]="neBuffer"
+    [ngStyle]="style"
+  ></div>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NeSliderTrackComponent implements OnInit, OnChanges {
   @Input() neVertical = false;
   @Input() neLength: number;
+  @Input() neBuffer = false;
 
   style: NeSlierStyle = {};
 
