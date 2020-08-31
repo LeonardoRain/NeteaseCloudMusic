@@ -1,41 +1,41 @@
-<div class="m-player">
+<div class="m-player" (click)="selfClick = true">
   <div class="lock">
-    <div class="left"><i></i>/div></div>
+    <div class="left"><i></i></div>
   </div>
   <div class="hand"></div>
   <div class="container">
     <div class="wrap">
       <div class="btns">
-        <i class="prev"></i>
-        <i class="toggle"></i>
-        <i class="next"></i>
+        <i class="prev" (click)="onPrev(currentIndex - 1)"></i>
+        <i class="toggle" [class.playing]="playing" (click)="onToggle()"></i>
+        <i class="next" (click)="onNext(currentIndex + 1)"></i>
       </div>
       <div class="head">
-        <img
-          src="http://s4.music.126.net/style/web2/img/default/default_album.jpg"
-        />
+        <img [src]="picUrl" />
         <i class="mask"> </i>
       </div>
       <div class="play">
-        <div class="words clearfix hide">
-          <p class="ellipsis margin-bottom-none">歌名</p>
+        <div class="words clearfix">
+          <p class="ellipsis margin-bottom-none">{{ currentSong?.name }}</p>
           <ul class="songs clearfix margin-bottom-none">
-            <li>
-              <a>歌手1</a>
-            </li>
-            <li>
-              <a>歌手2</a>
+            <li *ngFor="let item of currentSong?.ar; last as isLast">
+              <a>{{ item.name }}</a>
+              <span [hidden]="isLast"> /&nbsp; </span>
             </li>
           </ul>
         </div>
         <div class="bar">
           <div class="slider-wrap">
             <app-ne-slider
-              [bufferOffset]="bufferOffset"
-              [(ngModel)]="sliderValue"
+              [bufferOffset]="bufferPercent"
+              [(ngModel)]="percent"
+              (neOnAfterChange)="onPercentChanges($event)"
             ></app-ne-slider>
           </div>
-          <span class="time">02:11 / 04:55</span>
+          <span class="time songTime">
+            <em>{{ currentTime | formatTime }}</em> /
+            <span>{{ duration | formatTime }}</span>
+          </span>
         </div>
       </div>
       <div class="oper">
@@ -43,15 +43,30 @@
         <i class="share" title="分享"></i>
       </div>
       <div class="ctrl">
-        <i class="volume" title="音量"></i>
-        <i class="loop" title="循环"></i>
+        <i class="volume" title="音量" (click)="toggleVolPanel($event)"></i>
+        <i
+          [ngClass]="currentMode.type"
+          [title]="currentMode.label"
+          (click)="changeMode()"
+        ></i>
         <p class="open">
           <span></span>
         </p>
-        <div class="control-vol">
-          <app-ne-slider [neVertical]="true"></app-ne-slider>
+        <div class="control-vol" [hidden]="!showVolumePanel">
+          <app-ne-slider
+            [neVertical]="true"
+            [(ngModel)]="volume"
+            (ngModelChange)="onVolumeChange($event)"
+          ></app-ne-slider>
         </div>
       </div>
     </div>
   </div>
+  <audio
+    #audio
+    [src]="currentSong?.url"
+    (canplay)="onCanPlay()"
+    (timeupdate)="onTimeUpdate($event)"
+    (ended)="onEnded()"
+  ></audio>
 </div>

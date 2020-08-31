@@ -9,6 +9,8 @@ import {
   ChangeDetectorRef,
   OnDestroy,
   forwardRef,
+  Output,
+  EventEmitter,
 } from '@angular/core';
 import { fromEvent, merge, Observable, Subscription } from 'rxjs';
 import {
@@ -46,6 +48,8 @@ export class NeSliderComponent
   @Input() neMax = 100;
   @Input() bufferOffset: sliderValue = 0;
 
+  @Output() neOnAfterChange = new EventEmitter<sliderValue>();
+
   private sliderDom: HTMLDivElement;
 
   @ViewChild('neSlider', { static: true }) private neSlider: ElementRef;
@@ -57,7 +61,6 @@ export class NeSliderComponent
   private dragMove_: Subscription | null;
   private dragEnd_: Subscription | null;
 
-  // 表示是否正在滑动
   private isDragging = false;
 
   value: sliderValue = null;
@@ -178,6 +181,7 @@ export class NeSliderComponent
   }
 
   private onDragEnd() {
+    this.neOnAfterChange.emit(this.value);
     this.toggleDragMoving(false);
     this.cdr.markForCheck();
   }
@@ -204,7 +208,6 @@ export class NeSliderComponent
     return res;
   }
 
-  //  判断是否是 NaN
   private assertValueValid(value: sliderValue): boolean {
     return isNaN(typeof value !== 'number' ? parseFloat(value) : value);
   }
@@ -236,11 +239,8 @@ export class NeSliderComponent
   }
 
   private findCloseValue(position: number): number {
-    // 获取滑块总长度
     const sliderLength = this.getSliderLength();
-    // 滑块左/上端点
     const sliderStart = this.getSliderPosition();
-    // 滑块当前位置/总长度
     const ratio = limitNumberInRange(
       (position - sliderStart) / sliderLength,
       0,

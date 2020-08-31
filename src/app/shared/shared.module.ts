@@ -19,6 +19,7 @@ import {
   ArrowRightOutline,
 } from '@ant-design/icons-angular/icons';
 import { PlayCountPipe } from './play-count.pipe';
+import { FormatTimePipe } from './pipes/format-time.pipe';
 
 const icons: IconDefinition[] = [
   AccountBookFill,
@@ -31,7 +32,6 @@ const icons: IconDefinition[] = [
   ArrowRightOutline,
 ];
 @NgModule({
-  declarations: [],
   imports: [
     CommonModule,
     NgZorroAntdModule,
